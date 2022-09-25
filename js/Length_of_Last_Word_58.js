@@ -12,4 +12,8 @@
 
     // suuliin vgiin urtiig olood return hiij bga.
     return arr[arr.length - 1].length;
+
+
+    // time complexity -> O(2 * n) => O(n)
+    // space complexity -> O(n)
 };
