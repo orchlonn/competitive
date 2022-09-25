@@ -28,6 +28,8 @@
     "__functional_base": "cpp",
     "algorithm": "cpp",
     "functional": "cpp",
-    "memory": "cpp"
+    "memory": "cpp",
+    "cstdio": "cpp",
+    "iostream": "cpp"
   }
 }
