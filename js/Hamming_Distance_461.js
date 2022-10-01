@@ -3,6 +3,7 @@
  * @param {number} y
  * @return {number}
  */
+
  var hammingDistance = function(x, y) {
     var num = x ^ y,
     count = 0;
