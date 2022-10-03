@@ -4,19 +4,25 @@
  */
 
 const maxArea = (height) => {
-	let result = 0,
-		left = 0,
-		right = height.length - 1;
 
-	while (left < right) {
-		let smallestSide = Math.min(height[left], height[right]);
-		let area = (right - left) * smallestSide;
+	var max = 0;
 
-		if (area > result) result = area;
+	// first pointer
+	for(var i = 0; i < height.length; i++) {
 
-		if (height[left] < height[right]) left++;
-		else right--;
+		// second pointer
+		for(var j = 0; j < height.size; j++) {
+
+			// find area between first and last pointers.
+			var currentArea = Math.min(height[i], height[j]) * (j - i);
+			// compare current areas.
+			max = Math.max(max, currentArea);
+		}
+
 	}
 
-	return result;
+	return max;
 };
+
+// Time complexity: O(n * m);
+// space complexity: O(1);
