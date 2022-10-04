@@ -25,7 +25,6 @@ const maxArea1 = (height) => {
 };
 
 
-
 // Time complexity: O(n * m);
 // space complexity: O(1);
 
