@@ -12,7 +12,7 @@ var findMaxAverage = function(nums, k) {
 
     for(let i = 0; i < nums.length; i++){
         windowSum = windowSum + nums[i + k] - nums[i];
-
+        console.log("window sum : " + windowSum);
         if( windowSum > sum ) {
              sum = windowSum;
         }
