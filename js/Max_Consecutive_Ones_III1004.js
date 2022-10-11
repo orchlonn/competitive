@@ -1,21 +1,27 @@
-var longestOnes = function(nums, k) {
-    var right = 1, ans = 0;     
-    for (var left = 0; left < nums.length; left++) {
-        var currAns = 0, currK = k;
-        while(currK > 0) {
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var longestOnes = function(nums, k) {
+    var left = 0, right = 0, max = 0;
 
-            if(nums[right] == '0'){
-                currK --;
-                nums[right] == '1';
-                right++;
-            } else { 
-                right++;
-            };
+    while(left < nums.length) {
+
+        if(nums[left] == 0) {
+            k --;
         }
-        currAns = right - left;
-        ans = Math.max(currAns, ans);
-        left = right;
-        right++;
+
+        if( k < 0) {
+
+            if(nums[right] == 0){
+                k += 1;
+            }          
+
+            right ++;  
+        }
+
+        left++;
     }
-    return ans; 
+
+    return left - right;
 };
