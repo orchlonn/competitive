@@ -9,7 +9,6 @@
         let num = nums[i];
         let complement = target - num;
         if (dic.has(complement)) {
-            console.log(i, dic.get(complement));
             return [i, dic.get(complement)];
         }
         
@@ -19,4 +18,4 @@
 };
 
 
-twoSum([2,7,11,15], 9);
+twoSum([2,7,11,15], 0);
