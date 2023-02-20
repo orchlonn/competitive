@@ -81,18 +81,104 @@
 # print(even_num(2,3,12))
 
 
-def seconds_converter(a):
-    hours = 0
-    minutes = 0
-    if(a // 3600 > 0):
-        hours = a // 3600
-        a = a - hours * 3600
-    if(a // 60 > 0):
-        minutes = a // 60
-        a = a - minutes * 60
+# def seconds_converter(a):
+#     hours = 0
+#     minutes = 0
+#     if(a // 3600 > 0):
+#         hours = a // 3600
+#         a = a - hours * 3600
+#     if(a // 60 > 0):
+#         minutes = a // 60
+#         a = a - minutes * 60
 
-    seconds = a
+#     seconds = a
     
-    return [hours, minutes, seconds]
+#     return [hours, minutes, seconds]
 
-print(seconds_converter(1721))
+# print(seconds_converter(1721))
+
+# def hours_converter(hours):
+#     return [hours // 24, hours - (hours // 24) * 24]
+
+# print(hours_converter(70))
+
+# def convert_to_hours(days, hours):
+#     total_hours = days * 24 + hours
+#     return total_hours
+
+# print(convert_to_hours(2, 5))
+# def convert_months(months):
+#     return months // 12, months - (months // 12 * 12)
+
+# print(convert_months(22))
+
+# def lowest_number(a,b,c,d):
+#     if a > b:
+#         if a > c:
+#            if a > d:
+#                return a
+#            else:
+#                return d
+#         elif c > d:
+#             return c
+#         else:
+#             return d
+#     elif b > c:
+#         if b > d:
+#             return b
+#         else:
+#             return d
+#     elif c > d:
+#         return c
+#     else:
+#         return d
+    
+# print(lowest_number(112,222,13,412))   
+
+# def n_times(s, n):
+#     total =  s if n == 1 else 0
+#     for i in range(1,n):
+#         total += s        
+
+#     return total
+
+# print(n_times(3, 1))
+
+# def n_power_2(n):
+#     return 2 ** n
+# print(n_power_2(4))
+
+# def n_power_a(a, n):
+#     return a ** n
+
+# print(n_power_a(2, 5))
+
+# def criteria_level(gpa):
+#     if(gpa == 4):
+#         return "Excellent"
+#     elif(gpa >= 3):
+#         return 'Good'
+#     elif(gpa >= 2):
+#         return 'Nod bad'
+#     else:
+#         return "Worst"
+    
+# print(criteria_level(4))
+
+def week_number_text(day):
+    if day == 1:
+        return 'Monday'
+    elif day == 2:
+        return 'Tuesday'
+    elif day == 3:
+        return 'Thursday'
+    elif day == 4:
+        return 'Wednesday'
+    elif day == 5:
+        return 'Friday'
+    elif day == 6:
+        return 'Saturday'
+    else:
+        return 'Sunday'
+
+print(week_number_text(4))
