@@ -165,20 +165,48 @@
     
 # print(criteria_level(4))
 
-def week_number_text(day):
-    if day == 1:
-        return 'Monday'
-    elif day == 2:
-        return 'Tuesday'
-    elif day == 3:
-        return 'Thursday'
-    elif day == 4:
-        return 'Wednesday'
-    elif day == 5:
-        return 'Friday'
-    elif day == 6:
-        return 'Saturday'
-    else:
-        return 'Sunday'
+# def week_number_text(day):
+#     if day == 1:
+#         return 'Monday'
+#     elif day == 2:
+#         return 'Tuesday'
+#     elif day == 3:
+#         return 'Thursday'
+#     elif day == 4:
+#         return 'Wednesday'
+#     elif day == 5:
+#         return 'Friday'
+#     elif day == 6:
+#         return 'Saturday'
+#     else:
+#         return 'Sunday'
 
-print(week_number_text(4))
+# print(week_number_text(4))
+
+# def month_to_season(month):
+#     if (month  == 1 or month == 12 or month == 11):
+#         return "Winter"
+#     elif (month == 2 or month == 3 or month == 4):
+#         return "Spring"
+#     elif (month == 5 or month == 6 or month == 7):
+#         return "Summer"
+#     else:
+#         return "Fall"
+
+# print(month_to_season(3))
+
+# def isosceles_triangle_checker (a,b,c):
+#     if (a + b > c and b + c > a and a + c > b):
+#         return "YES"
+#     else:
+#         return "NO"
+
+# def isosceles_triangle_checker(a, b, c):
+#     return "YES" if(a + b > c and b + c > a and a + c > b) else "NO"
+# print(isosceles_triangle_checker(33,19,5))
+
+def easy_expression(a, b, c):
+    return  a * b - c
+
+
+print(easy_expression(5,6,14))
