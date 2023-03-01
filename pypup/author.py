@@ -205,8 +205,43 @@
 #     return "YES" if(a + b > c and b + c > a and a + c > b) else "NO"
 # print(isosceles_triangle_checker(33,19,5))
 
-def easy_expression(a, b, c):
-    return  a * b - c
+# def easy_expression(a, b, c):
+#     return  a * b - c
 
 
-print(easy_expression(5,6,14))
+# print(easy_expression(5,6,14))
+
+# import bisect 
+
+# def determine_grade(scores, breakpoints=[50, 60, 70, 80, 90], grades='FEDCBA'):
+#     i = bisect.bisect(breakpoints, scores)
+#     return grades[i]
+
+# print(determine_grade(88))
+
+# def float_converter(a):
+#     return int(a)
+
+# print(float_converter(32.21321))
+
+# def int_to_string(a):
+#     return str(a)
+
+# def float_to_string(a):
+# #     return str(a)
+
+# def add_two_string(a, b):
+#     return str(a) + str(b)
+
+# print(add_two_string(2,-32))
+
+# def split_string(a):
+#     result = a.split()
+#     return result
+# print(split_string('hello world'))
+
+def vowel_counter(s):
+    counter = s.lower().count("i")
+    return counter
+
+print(vowel_counter("I love sushi."))
