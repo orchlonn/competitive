@@ -240,8 +240,46 @@
 #     return result
 # print(split_string('hello world'))
 
-def vowel_counter(s):
-    counter = s.lower().count("i")
-    return counter
+# def vowel_counter(s):
+#     counter = s.lower().count("i")
+#     return counter
 
-print(vowel_counter("I love sushi."))
+# print(vowel_counter("I love sushi."))
+
+# def lower_case_string(str):
+#     return str.lower()
+
+# def lower_case_string(str):
+#     lower_str = str.lower()
+#     return lower_str
+
+# def upper_case_string(str):
+#     uppercase_str = str.upper()
+#     return uppercase_str
+
+# print(upper_case_string('hello, tokyo'))
+
+# def detect_upper_str(str):
+#     return  str.isnumeric()
+    
+
+# print(detect_upper_str("123"))
+
+# def slicing_left_indices(text):
+#     sliced_text = text[-8:-5]
+#     return sliced_text
+# print(slicing_left_indices("Life Doesn’t Frighten Me"))
+# import math
+# print(-7 * - 7)   
+
+# def sortedSquares(nums):
+        
+#     for i in range(len(nums)):
+#         nums[i] = nums[i] * nums[i]
+#     nums.sort()
+    
+#     return nums
+
+# print(sortedSquares([-4,-1,0,3,10]))
+
+
