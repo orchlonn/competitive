@@ -283,3 +283,47 @@
 # print(sortedSquares([-4,-1,0,3,10]))
 
 
+# from math import e, log
+
+# def sqrt_number(x):
+#     if x < 2:
+#         return x
+#     left = int(e**(0.5 * log(x)))
+#     right = left + 1
+#     return left if right * right > x else right
+
+# print(sqrt_number(14))
+
+# def sqrt_number( x):
+#     if x < 2:
+#         return x
+        
+#     left, right = 2, x // 2
+
+        
+#     while left <= right:
+#         pivot = left + (right - left) // 2
+#         num = pivot * pivot
+        
+#         if num > x:
+#             right = pivot -1
+#         elif num < x:
+#             left = pivot + 1
+#         else:
+#             return pivot
+            
+#     return right
+    
+# print(sqrt_number(14))
+
+def isPalindrome(num):
+    if num < 0:
+        return False
+    rev = 0
+    orig = num
+    while num != 0:
+        rev = rev * 10 + num % 10
+        num //= 10
+    return rev == orig
+            
+print(isPalindrome(121))
