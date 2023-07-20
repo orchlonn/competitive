@@ -1,11 +1,11 @@
-def maximum_subarray(arr):
+def maximum_subarray(nums):
     maxSub = nums[0]
     curSum = 0
     
-    for i in arr:
+    for i in nums:
         if(curSum < 0):
             curSum = 0
-        curSum += arr[i]
+        curSum += i
         maxSub = max(maxSub, curSum)
         
     return maxSub
