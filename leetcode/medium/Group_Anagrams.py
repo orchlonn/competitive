@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 def groupAnagrams(strs):
+    # defaultdict is creating the key 
     groups = defaultdict(list)
 
     # `s` is the order of vowels in strs 
