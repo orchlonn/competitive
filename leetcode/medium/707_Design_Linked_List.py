@@ -41,18 +41,3 @@ class MyLinkedList:
             curr = curr.next
             index -= 1
         
-        if index == 0 and curr != self.right:
-            
-            
-
-    def deleteAtIndex(self, index: int) -> None:
-        
-
-
-# Your MyLinkedList object will be instantiated and called as such:
-# obj = MyLinkedList()
-# param_1 = obj.get(index)
-# obj.addAtHead(val)
-# obj.addAtTail(val)
-# obj.addAtIndex(index,val)
-# obj.deleteAtIndex(index)
