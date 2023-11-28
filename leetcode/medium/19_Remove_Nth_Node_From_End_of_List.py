@@ -4,13 +4,14 @@ class Solution:
         left, right = dummy, head
 
         while n > 0 and right:
-            right = right.next
             n -= 1
+            right = right.next
+            
         
         while right:
             right = right.next
             left = left.next
-            
+
         left.next = left.next.next
 
         return dummy.next
