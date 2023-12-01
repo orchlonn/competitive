@@ -3,15 +3,14 @@ class Solution:
         dummy = ListNode(0, head)
         left, right = dummy, head
 
-        while n > 0 and right:
-            n -= 1
+        while n > 0:
             right = right.next
-            
+            n-= 1
         
         while right:
             right = right.next
             left = left.next
-
+        
         left.next = left.next.next
-
         return dummy.next
+        
