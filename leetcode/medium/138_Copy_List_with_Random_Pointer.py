@@ -11,13 +11,13 @@ class Node:
 class Solution:
     def copyRandomList(self, head: "Node") -> "Node":
         oldToCopy = {None: None}
-        cur = head 
-        
+        cur = head
+
         while cur:
             copy = ListNode(cur.val)
             oldToCopy[cur] = copy
             cur = cur.next
-
+        
         cur = head
         while cur:
             copy = oldToCopy[cur]
@@ -26,3 +26,4 @@ class Solution:
             cur = cur.next
         
         return oldToCopy[head]
+        
