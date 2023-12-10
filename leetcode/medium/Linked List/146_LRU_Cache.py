@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, key, val):
         self.key, self.val = key, val
-        self.prev =  self.next = None
+        self.prev = self.next = None
 
 class LRUCache:
 
@@ -40,4 +40,3 @@ class LRUCache:
             self.remove(lru)
             del self.cache[lru.key]
         
-
