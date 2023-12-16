@@ -5,7 +5,7 @@ class Solution:
         
         for c in path + '/':
             if c == '/':
-                if cur == '..': 
+                if cur == '..':
                     if stack: stack.pop()
                 elif cur != '' and cur != '.':
                     stack.append(cur)
@@ -13,5 +13,5 @@ class Solution:
             
             else:
                 cur += c
-                
+            
         return '/' + '/'.join(stack)
