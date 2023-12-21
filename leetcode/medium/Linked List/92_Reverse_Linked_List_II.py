@@ -13,6 +13,7 @@ class Solution:
             prev = curr
             curr = temp
 
+
         leftPrev.next.next = curr
         leftPrev.next = prev
 
