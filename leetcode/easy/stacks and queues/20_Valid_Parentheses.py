@@ -10,6 +10,7 @@ class Solution:
                 if not stack:
                     return False
 
+
                 prev_opening = stack.pop()
                 if matching[prev_opening] != c:
                     return False
