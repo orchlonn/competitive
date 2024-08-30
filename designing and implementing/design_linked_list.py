@@ -6,30 +6,29 @@ class ListNode:
 class LinkedList:
     
     def __init__(self):
+        # Dummy node
         self.head = ListNode(-1)
         self.tail = self.head
-    
+
     def get(self, index: int) -> int:
         curr = self.head
         i = 0
-
         while curr:
             if i == index:
                 return curr.val
             i += 1
             curr = curr.next
 
-        return -1 
-
+        return -1
 
     def insertHead(self, val: int) -> None:
         new_node = ListNode(val)
         new_node.next = self.head.next
         self.head.next = new_node
-
         if not new_node.next: # If list was empty before insertion
             self.tail = new_node
 
+        
     def insertTail(self, val: int) -> None:
         self.tail.next = ListNode(val)
         self.tail = self.tail.next
@@ -37,10 +36,9 @@ class LinkedList:
     def remove(self, index: int) -> bool:
         i = 0
         curr = self.head
-
         while i < index and curr:
             i += 1
-            curr = curr.next 
+            curr = curr.next
 
         if curr and curr.next:
             if curr.next == self.tail:
@@ -54,7 +52,7 @@ class LinkedList:
         ans = []
 
         while curr:
-            ans.append(curr.val)
+            ans.append(curr.val)        
             curr = curr.next
 
         return ans
