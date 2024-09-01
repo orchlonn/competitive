@@ -34,16 +34,16 @@ class MyLinkedList:
         prev.next = node
 
     def addAtIndex(self, index: int, val: int) -> None:
-        next = self.left.next
-        while next and index > 0:
-            next = next.next
-            index -= 1
-        
-        if next and index == 0:
-            node, prev = ListNode(val), next.prev
-            node.next, node.prev = next, prev
-            next.prev = node
-            prev.next = node
+            next = self.left.next
+            while next and index > 0:
+                next = next.next
+                index -= 1
+            
+            if next and index == 0:
+                node, prev = ListNode(val), next.prev
+                node.next, node.prev = next, prev
+                next.prev = node
+                prev.next = node
 
 
     def deleteAtIndex(self, index: int) -> None:
