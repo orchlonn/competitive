@@ -11,4 +11,5 @@ class Solution:
             index = bisect.bisect_right(nums, query)
             ans.append(index)
 
+
         return ans
