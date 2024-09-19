@@ -14,5 +14,4 @@ class Solution:
             for j in range(count[n]):
                 nums[i] = n
                 i += 1
-        
         return nums
