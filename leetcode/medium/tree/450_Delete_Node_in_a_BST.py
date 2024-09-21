@@ -9,8 +9,9 @@ class Solution:
         if not root:
             return None
 
+        
         if key > root.val:
-            root.right = self.deleteNode(root.right, key)
+            root.right self.deleteNode(root.right, key)
         elif key < root.val:
             root.left = self.deleteNode(root.left, key)
         else:
@@ -19,13 +20,13 @@ class Solution:
             elif not root.left:
                 return root.right
 
-            # find minimum value from right sub tree
+            # find minimum number from right sub tree
             cur = root.right
-            while cur.left:
+            while cur and cur.left:
                 cur = cur.left
             
             root.val = cur.val
-            root.right = deleteNode(root.right, root.val)
+            root.right = self.deleteNode(root.right, root.val)
 
         
         return root
