@@ -25,11 +25,12 @@ class Solution:
         res = 0
 
         while stack:
-            node, depth = stack.pop()
+          node, depth = stack.pop()
 
-            if node:
-                stack.append([node.left, depth + 1])
-                stack.append([node.right, depth + 1])
-                res = max(res, depth)
-            
+          if node:
+            stack.append([node.left, depth + 1])
+            stack.append([node.right, depth + 1])
+            res = max(res, depth)
+          
+        
         return res
