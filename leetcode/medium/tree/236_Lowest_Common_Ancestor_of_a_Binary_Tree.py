@@ -21,5 +21,5 @@ class Solution:
         
         if left:
             return left
-
+        
         return right
