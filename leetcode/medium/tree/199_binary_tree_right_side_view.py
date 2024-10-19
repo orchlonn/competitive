@@ -1,3 +1,5 @@
+# BFS solution
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -6,23 +8,23 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        queue = deque([root])
+        if not root:
+            return []
+
+        q = collections.deque([root])
         ans = []
 
-        while queue:
-          rightSide = None
-          queueLength = len(queue)
+        while q:
+            qLength = len(q)
+            ans.append(q[-1].val)
 
-          for i in range(queueLength):
-            node = queue.popleft()
-            
-            if node:
-              rightSide = node
-              queue.append(node.left)
-              queue.append(node.right)
-          
-          if rightSide: 
-            ans.append(rightSide.val)
+            for _ in range(qLength):
+                node = q.popleft()
+                
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
 
         
         return ans
