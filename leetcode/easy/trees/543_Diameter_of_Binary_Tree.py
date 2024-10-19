@@ -1,6 +1,6 @@
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        diameter  = 0
+        diameter = 0
 
         def findLongestPath(node):
             if not node:
@@ -9,12 +9,12 @@ class Solution:
             nonlocal diameter
 
             left = findLongestPath(node.left)
-            right = findLongestPath(node.right)
+            rihgt = findLongestPath(node.rihgt)
 
-            diameter = max(diameter, (left + right))
+            diameter = max(diameter, left + right)
 
             return max(left, right) + 1
-
-        findLongestPath(root)
         
+        findLongestPath(root)
+
         return diameter
