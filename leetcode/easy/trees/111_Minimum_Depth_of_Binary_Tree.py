@@ -19,6 +19,7 @@ class Solution:
                     return res
                 
                 q.append(node.left)
+                
                 q.append(node.right)
 
             res += 1
