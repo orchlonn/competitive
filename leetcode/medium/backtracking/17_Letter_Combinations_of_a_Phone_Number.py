@@ -18,7 +18,7 @@ class Solution:
             if len(path) == len(digits):
                 ans.append("".join(path))
                 return
-            
+
             possible_letters = letters[digits[index]]
             for letter in possible_letters:
                 path.append(letter)
