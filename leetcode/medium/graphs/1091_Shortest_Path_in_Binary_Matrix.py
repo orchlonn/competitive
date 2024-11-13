@@ -4,7 +4,7 @@ class Solution:
         directions = [[0,1], [0,-1], [1,0], [-1, 0],
                       [1,1], [1,-1], [-1,1], [-1, -1]]
         q = deque([(0, 0, 1)])
-        visit = set(0, 0)
+        visit = set((0, 0))
 
         while q:
             r, c, length = q.popleft()
@@ -20,6 +20,6 @@ class Solution:
             for dr, dc in directions:
                 if ((r + dr, c + dc) not in visit):
                     q.append((r + dr, c + dc, length + 1))
-                    visit.add((r, c))
+                    visit.add((r + dr, c + dc))
             
         return -1
