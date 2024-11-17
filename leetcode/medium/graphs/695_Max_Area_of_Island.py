@@ -18,6 +18,7 @@ class Solution:
                         dfs(r, c + 1) + 
                         dfs(r, c - 1))
 
+
         for r in range(rows):
             for c in range(cols):
                 if (r, c) not in seen and grid[r][c] == 1:
