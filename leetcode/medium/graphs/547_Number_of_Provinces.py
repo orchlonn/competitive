@@ -4,7 +4,9 @@ class Solution:
         n = len(isConnected)
 
         def dfs(node):
+            print(node)
             for nei in graph[node]:
+                print(graph[node])
                 if nei not in seen:
                     seen.add(nei)
                     dfs(nei)
