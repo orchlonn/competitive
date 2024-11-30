@@ -20,7 +20,6 @@ class Solution:
             for dx, dy in directions:
                 dfs(row + dx, col + dy)
 
-
         for r in range(ROWS):
             for c in range(COLS):
                 if (r, c) not in seen and grid[r][c] == "1":
