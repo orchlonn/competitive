@@ -23,10 +23,11 @@ def bfs(grid):
 
             neighbors = [[0, 1], [0, -1], [1, 0], [-1, 0]]
             for dr, dc in neighbors:
-                if (min(r + dr, c + dc) < 0 or
-                    r + dr == ROWS or c + dc == COLS or
+                if (r + dr not in range(ROWS) or c + dc not in range(COLS) or 
                     (r + dr, c + dc) in visit or grid[r + dr][c + dc] == 1):
                     continue
                 queue.append((r + dr, c + dc))
                 visit.add((r + dr, c + dc))
         length += 1
+
+print(bfs(grid))
