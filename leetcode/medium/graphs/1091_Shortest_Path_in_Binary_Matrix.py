@@ -21,4 +21,4 @@ class Solution:
                     visit.add((r + dx, c + dy))
                     queue.append((r + dx, c + dy, length + 1))
             
-        return -1 
+        return -1
