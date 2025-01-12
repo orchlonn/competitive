@@ -1,3 +1,5 @@
+# BFS solution
+
 """
 # Definition for a Node.
 class Node:
@@ -8,22 +10,21 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        # Edge case #1
+        # edge case #1 
         if not node:
-            return None
-
+            return None 
+        
         oldToNew = {}
-        oldToNew[node] = Node(node.val) 
+        oldToNew[node] = Node(node.val)
         queue = deque([node])
-
+        
         while queue:
-            cur = queue.popleft()   
-            for nei in cur.neighbors:
+            curr = queue.popleft()
+            for nei in curr.neighbors:
                 if nei not in oldToNew:
-                    queue.append(nei)
+                    queue.append((nei))
                     oldToNew[nei] = Node(nei.val)
-                oldToNew[cur].neighbors.append(oldToNew[nei])
-        
+                oldToNew[curr].neighbors.append(oldToNew[nei])
+                
         return oldToNew[node]
-
-        
+            
