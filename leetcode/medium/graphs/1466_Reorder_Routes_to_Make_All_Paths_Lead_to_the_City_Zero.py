@@ -3,19 +3,19 @@ class Solution:
         graph = defaultdict(list)
         roads = set()
         seen = {0}
-        for x, y in connections:
-            graph[x].append(y)
-            graph[y].append(x)
-            roads.add((x, y))
-
+        for i, j in connections:
+            graph[i].append(j)
+            graph[j].append(i)
+            roads.add((i, j))
+        
         def dfs(node):
-            ans = 0
+            res = 0
             for nei in graph[node]:
                 if nei not in seen:
-                    if (node, nei) in roads:
-                        ans += 1
+                    if (nei, node) not in roads:
+                        res += 1
                     seen.add(nei)
-                    ans += dfs(nei)
-            return ans
-
+                    res += dfs(nei)
+            return res
+        
         return dfs(0)
