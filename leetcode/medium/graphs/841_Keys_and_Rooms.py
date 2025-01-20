@@ -12,4 +12,5 @@ class Solution:
                     dfs(nei)
             
         dfs(0)
+        
         return True if len(visit) == len(rooms) else False
