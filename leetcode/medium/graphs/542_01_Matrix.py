@@ -11,7 +11,7 @@ class Solution:
         for row in range(ROWS):
             for col in range(COLS):
                 if mat[row][col] == 0:
-                    queue.append((row, col, steps))
+                    queue.append((row, col, 1))
                     visit.add((row, col))
         
         while queue:
