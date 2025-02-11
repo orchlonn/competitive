@@ -13,17 +13,17 @@ class Solution:
             
             if (row, col) in visit:
                 return 0
-            
+
             visit.add((row, col))
 
             perim = 0
             for dx, dy in directions:
                 next_row, next_col = row + dx, col + dy
                 perim += dfs(next_row, next_col)
-            
+                
             return perim
-            
-        for row in range(len(grid)):
-            for col in range(len(grid[row])):
+
+        for row in range(ROWS):
+            for col in range(COLS):
                 if grid[row][col] == 1:
                     return dfs(row, col)
