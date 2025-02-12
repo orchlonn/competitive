@@ -1,8 +1,8 @@
 class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
-        visit = set()
         directions = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+        visit = set()
 
         def dfs(r, c):
             if (r not in range(ROWS) or
@@ -19,14 +19,13 @@ class Solution:
             
             return res
 
-        land, borderLand = 0, 0
 
+        
+        land, borderLand = 0, 0
         for r in range(ROWS):
             for c in range(COLS):
                 land += grid[r][c]
-                if ((r, c) not in visit and grid[r][c] and
-                    (r in [0, ROWS - 1] or c in [0, COLS - 1])
-                ):
+                if grid[r][c] == 1 and (r, c) not in visit and (r in [0, ROWS - 1] or c in [0, COLS - 1]):
                     borderLand += dfs(r, c)
 
         return land - borderLand
