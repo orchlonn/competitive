@@ -7,26 +7,27 @@
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
-            return None
-
+            return root
         
-        if key > root.val:
-            root.right self.deleteNode(root.right, key)
-        elif key < root.val:
-            root.left = self.deleteNode(root.left, key)
-        else:
-            if not root.right:
-                return root.left
-            elif not root.left:
-                return root.right
-
-            # find minimum number from right sub tree
-            cur = root.right
+        def findMinNode(root):
+            cur = root
             while cur and cur.left:
                 cur = cur.left
-            
-            root.val = cur.val
-            root.right = self.deleteNode(root.right, root.val)
-
+            return cur
         
-        return root
+        if key > root.val:
+            root.right = self.deleteNode(root.right, key)
+        elif key < root.val:
+            root.left = self.deleteNode(root.left, key)            
+        else:
+            # Base case of recursive
+            if not root.left:
+                return root.right
+            elif not root.right:
+                return root.left
+            else:
+                minNode = findMinNode(root.right)
+                root.val = minNode.val
+                root.right = self.deleteNode(root.right, root.val)
+        
+        return root        
