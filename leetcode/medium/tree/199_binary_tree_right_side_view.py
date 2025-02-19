@@ -1,5 +1,3 @@
-# BFS solution
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -11,20 +9,24 @@ class Solution:
         if not root:
             return []
 
-        q = collections.deque([root])
         ans = []
+        ans.append(root.val)
+        queue = deque([(root)])
 
-        while q:
-            qLength = len(q)
-            ans.append(q[-1].val)
+        while queue:
+            isValid = False
 
-            for _ in range(qLength):
-                node = q.popleft()
-                
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-
+            for i in range(len(queue)):
+                cur = queue.popleft()
+                if cur.right:
+                    if not isValid:
+                        ans.append(cur.right.val)
+                        isValid = True
+                    queue.append(cur.right)
+                if cur.left:
+                    if not isValid:
+                        ans.append(cur.left.val)
+                        isValid = True
+                    queue.append(cur.left)
         
         return ans
