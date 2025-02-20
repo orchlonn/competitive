@@ -19,5 +19,4 @@ class Solution:
                 ans += 1
             
             return ans
-
         return dfs(root, float('-inf'))
