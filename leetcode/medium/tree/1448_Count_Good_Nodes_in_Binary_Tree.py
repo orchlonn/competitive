@@ -21,3 +21,6 @@ class Solution:
             return ans
         
         return dfs(root, float('-inf'))
+
+# Time complexity: O(n)
+# Space complexity: O(n)
