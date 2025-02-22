@@ -1,21 +1,18 @@
 class Solution:
     def maxAncestorDiff(self, root: TreeNode) -> int:
         if not root:
-            return 0
+            return 0 
         
-        self.ans = 0
-
-        def helper(node, curr_max, curr_min):
+        def dfs(node, currMax, currMin):
             if not node:
-                return 
-            self.ans = max(self.ans, abs(curr_max - node.val), abs(curr_min - node.val))
+                return currMax - currMin
+            
+            currMax = max(currMax, node.val)
+            currMin = min(currMin, node.val)
 
-            curr_max = max(curr_max, node.val)
-            curr_min = min(curr_min, node.val)
+            left = dfs(node.left, currMax, currMin)
+            right = dfs(node.right, currMax, currMin)
 
-            helper(node.left, curr_max, curr_min)
-            helper(node.right, curr_max, curr_min)
-
-        helper(root, root.val, root.val)
-
-        return self.ans
+            return max(left, right)
+        
+        return dfs(root, root.val, root.val)
