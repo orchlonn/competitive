@@ -1,5 +1,3 @@
-# DFS solution
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -11,21 +9,25 @@ class Solution:
         if not root:
             return 0
 
-        q = collections.deque([root])
+        queue = deque([(root)])
         ans = 0
 
-        while q:
-            qLen = len(q)
+        while queue:
             ans = 0
+            for _ in range(len(queue)):
+                node = queue.popleft()
 
-            for _ in range(qLen):
-                node = q.popleft()
+                if node and node.left:
+                    queue.append(node.left)
+                if node and node.right:
+                    queue.append(node.right)
 
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-
-                if node:
+                if node and not node.left and not node.right:
                     ans += node.val
+            
         return ans
+
+# Time complexity: O(n)
+# Space complexity: 
+    # Wost case [unbalanced tree] - O(n)
+    # Best case [balanced tree] - O(logn)
