@@ -1,5 +1,3 @@
-# DFS Solution
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -10,22 +8,24 @@ class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        
-        q = collections.deque([root])
+
+        queue = deque([(root)])
         ans = []
 
-        while q:
-            qLenght = len(q)
-            max_curr = float('-inf')
+        while queue:
+            maxCurr = float('-inf')
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                maxCurr = max(maxCurr, node.val)
 
-            for _ in range(qLenght):
-                node = q.popleft()
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-                max_curr = max(max_curr, node.val)
-
-            ans.append(max_curr)
-
+                if node and node.left:
+                    queue.append(node.left)
+                if node and node.right:
+                    queue.append(node.right)
+            
+            ans.append(maxCurr)
+        
         return ans
+
+# Time complexity: O(n)
+# Space complexity: O(n)
