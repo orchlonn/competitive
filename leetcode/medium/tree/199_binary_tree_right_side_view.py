@@ -9,24 +9,29 @@ class Solution:
         if not root:
             return []
 
+        queue = deque([(root)])
         ans = []
         ans.append(root.val)
-        queue = deque([(root)])
-
-        while queue:
-            isValid = False
-
-            for i in range(len(queue)):
-                cur = queue.popleft()
-                if cur.right:
-                    if not isValid:
-                        ans.append(cur.right.val)
-                        isValid = True
-                    queue.append(cur.right)
-                if cur.left:
-                    if not isValid:
-                        ans.append(cur.left.val)
-                        isValid = True
-                    queue.append(cur.left)
         
+        while queue:
+            temp = []
+            for _ in range(len(queue)):
+                node = queue.popleft()
+            
+                if node and node.left:
+                    queue.append(node.left)
+                    temp.append(node.left.val)
+                if node and node.right:
+                    queue.append(node.right)
+                    temp.append(node.right.val)
+
+            if len(temp) > 1:
+                ans.append(temp[len(temp) - 1])
+            elif len(temp) == 1:
+                ans.append(temp[0])
+
         return ans
+
+
+# Time complexity: O(n)
+# Space complexity: O(n)
