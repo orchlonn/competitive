@@ -11,14 +11,18 @@ class Solution:
                 return 0
             
             dfs(node.left)
-            values.append(node.val)
+            values.append(node.va;)
             dfs(node.right)
 
         values = []
         dfs(root)
+
         ans = float('inf')
 
         for i in range(1, len(values)):
             ans = min(ans, values[i] - values[i - 1])
         
         return ans
+    
+# Time complexity: O(n)
+# Space complexity: O(n)
