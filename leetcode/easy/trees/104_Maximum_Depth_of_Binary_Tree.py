@@ -9,7 +9,21 @@ class Solution:
         if not root:
             return 0
 
-        left = self.maxDepth(root.left)
-        right = self.maxDepth(root.right)
-        print(left, right)
-        return max(left, right) + 1
+        q = deque([(root)])
+        ans = 0
+
+        while q:
+            for _ in range(len(q)):
+                node = q.popleft()
+
+                if node and node.left:
+                    q.append(node.left)
+                if node and node.right:
+                    q.append(node.right)
+            
+            ans += 1
+        
+        return ans
+
+# Time complexity: O(n)
+# Space complexity: O(n)
