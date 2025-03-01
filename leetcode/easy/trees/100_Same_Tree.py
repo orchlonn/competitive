@@ -13,7 +13,6 @@ class Solution:
             return False
         
         if p and q and p.val != q.val:
-            print(p, q)
             return False
 
         left = self.isSameTree(p.left, q.left)        
