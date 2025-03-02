@@ -13,15 +13,20 @@ class Solution:
         ans = []
 
         while queue:
-            val = []
+            temp = []
             for _ in range(len(queue)):
-                cur = queue.popleft()
-                val.append(cur.val)
-                if cur.left:
-                    queue.append(cur.left)
-                if cur.right:
-                    queue.append(cur.right)
-            
-            ans.append(val)
+                node = queue.popleft()
+                if not node:
+                    break
+                temp.append(node.val)
+                if node and node.left:
+                    queue.append(node.left)
+                if node and node.right:
+                    queue.append(node.right)
 
+            ans.append(temp)
+        
         return ans
+
+# Time complexity: O(n)
+# Space complexity: O(n)
