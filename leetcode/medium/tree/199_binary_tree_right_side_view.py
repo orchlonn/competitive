@@ -9,20 +9,20 @@ class Solution:
         if not root:
             return []
 
-        queue = deque([(root)])
+        q = deque([(root)])
         ans = []
         ans.append(root.val)
-        
-        while queue:
+
+        while q:
             temp = []
-            for _ in range(len(queue)):
-                node = queue.popleft()
-            
+            for _ in range(len(q)):
+                node = q.popleft()
+                print(node)
                 if node and node.left:
-                    queue.append(node.left)
+                    q.append(node.left)    
                     temp.append(node.left.val)
                 if node and node.right:
-                    queue.append(node.right)
+                    q.append(node.right)
                     temp.append(node.right.val)
 
             if len(temp) > 1:
@@ -31,7 +31,6 @@ class Solution:
                 ans.append(temp[0])
 
         return ans
-
 
 # Time complexity: O(n)
 # Space complexity: O(n)
