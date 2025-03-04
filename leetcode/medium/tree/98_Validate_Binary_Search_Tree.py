@@ -9,7 +9,7 @@ class Solution:
         def dfs(node, small, large):
             if not node:
                 return True
-
+            
             if not (small < node.val < large):
                 return False
             
@@ -17,5 +17,9 @@ class Solution:
             right = dfs(node.right, node.val, large)
 
             return left and right
-        
+
         return dfs(root, float('-inf'), float('inf'))
+
+
+# Time complexity: O(n)
+# Spcae complexity: O(n)
