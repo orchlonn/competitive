@@ -1,15 +1,23 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        def backtrack(comb, i):
-            if i > len(nums):
-                return
-            ans.append(list(comb))
+      res = []
+      subset = []
 
-            for j in range(i, len(nums)):
-                comb.append(nums[j])
-                backtrack(comb, j + 1)
-                comb.pop()
+      def dfs(index):
+        if index >= len(nums):
+          res.append(subset.copy())
+          return
+        
+        # include nums[index]
+        subset.append(nums[index])
+        dfs(index + 1)
 
-        ans = []
-        backtrack([], 0)
-        return ans
+        # Not include nums[index]
+        subset.pop()
+        dfs(index + 1)
+      
+      dfs(0)
+      return res
+
+# Time complexity: O(2^n)
+# Space complexity: O(n * 2^n)
