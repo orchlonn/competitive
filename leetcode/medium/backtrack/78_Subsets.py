@@ -1,23 +1,22 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        ans = []
-        subset = []
-
-        def backtrack(index):
+        def backtrack(subsets, index, curSet):
             if index >= len(nums):
-                ans.append(subset.copy())
+                subsets.append(curSet.copy())
                 return
             
             # include nums[index]
-            subset.append(nums[index])
-            backtrack(index + 1)
+            curSet.append(nums[index])
+            backtrack(subsets, index + 1, curSet)
+            curSet.pop()
 
             # not include nums[index]
-            subset.pop()
-            backtrack(index + 1)
-        
-        backtrack(0)
-        return ans
+            backtrack(subsets, index + 1, curSet)
 
-# Time complexity: O(2^n)
-# Space complexity: O(n * 2^n)
+
+        subsets, curSet = [], []
+        backtrack(subsets, 0, curSet)
+        return subsets
+
+# Time complexity: O(n * 2^n)
+# Space complexity: O(n) == O(h)
