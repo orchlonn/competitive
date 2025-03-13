@@ -1,15 +1,24 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        def backtrack(comb, i):
-            if len(comb) == k:
-                ans.append(list(comb))
+        def dfs(i, curComb):
+            if len(curComb) >= k:
+                comb.append(curComb.copy())
                 return 
-
-            for num in range(i, n + 1):
-                comb.append(num)
-                backtrack(comb, num + 1)
-                comb.pop()
             
-        ans = []
-        backtrack([], 1)
-        return ans
+            if i > n:
+                return
+            
+            for j in range(i, n + 1):
+                curComb.append(j)
+                dfs(j + 1, curComb)
+                curComb.pop()
+
+        comb = []
+        dfs(1, [])
+        return comb
+
+
+# Time complexity: O(k * C(n, k)) 
+# Space complexity: O(k) + O(C(n,k))
+
+# where C = n!/k!(n-k)!
