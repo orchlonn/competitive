@@ -1,23 +1,27 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
-
-        def dfs(i, cur, total):
-            if total == target:
-                res.append(cur.copy())
+        def backtrack(i, curComb, curSum):
+            if curSum == target:
+                ans.append(curComb.copy())
                 return
-            if i >= len(candidates) or total > target:
+            
+            if curSum > target:
+                i += 1
                 return
+            
+            if i > len(candidates):
+                return
+            
+            for j in range(i, len(candidates)):
+                curSum += candidates[j]
+                curComb.append(candidates[j])
+                backtrack(j, curComb, curSum)
+                val = curComb.pop()
+                curSum -= val
 
-            cur.append(candidates[i])
-            dfs(i, cur, total + candidates[i])
-            cur.pop()
-            dfs(i + 1, cur, total)
-        
-        dfs(0, [], 0)
-        
-        return res
+        ans = []
+        backtrack(0, [], 0)
+        return ans
 
-# Time complexity: O(2^n)
-# Space complexity: O(n)
-
+# Time complexity: O(N^T), where N is the number of candidates and T is the target.
+# Space complexity: O(T*X), where X is the number of valid combinations.
