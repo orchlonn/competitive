@@ -6,7 +6,6 @@ class Solution:
                 return
             
             if curSum > target:
-                i += 1
                 return
             
             if i > len(candidates):
