@@ -1,9 +1,15 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        if len(digits) == 0:
-            return []
+        def backtrack(i, curStr):
+            if len(curStr) == len(digits):
+                res.append(curStr)
+                return
             
-        letters = {
+            for c in digitToChar[digits[i]]:
+                backtrack(i + 1, curStr + c)
+
+        res = []
+        digitToChar = {
             "2": "abc",
             "3": "def",
             "4": "ghi",
@@ -11,20 +17,13 @@ class Solution:
             "6": "mno",
             "7": "pqrs",
             "8": "tuv",
-            "9": "wxyz",
+            "9": "wxyz"
         }
 
-        def backtrack(index, path):
-            if len(path) == len(digits):
-                ans.append("".join(path))
-                return
+        if digits:
+            backtrack(0, '')
+        
+        return res
 
-            possible_letters = letters[digits[index]]
-            for letter in possible_letters:
-                path.append(letter)
-                backtrack(index + 1, path)
-                path.pop()
-
-        ans = []
-        backtrack(0, [])
-        return ans
+# Time complexity: O(n) * O(4^n) 
+# Space complexity: O(n) * O(4^n) 
