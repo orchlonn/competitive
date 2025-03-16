@@ -1,18 +1,22 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        def backtrack(comb, counter):
-            if len(comb) == len(nums):
-                ans.append(list(comb))
-                return
+        def backtrack(i):
+            if i == len(nums):
+                return [[]]
+            
+            resPerms = []
+            perms = backtrack(i + 1)
 
-            for num in counter:
-                if counter[num] > 0:
-                    comb.append(num)
-                    counter[num] -= 1
-                    backtrack(comb, counter)
-                    comb.pop()
-                    counter[num] += 1
+            for p in perms:
+                for j in range(len(p) + 1):
+                    pCopy = p.copy()
+                    pCopy.insert(j, nums[i])
+                    if pCopy not in resPerms:
+                        resPerms.append(pCopy)
+            
+            return resPerms
         
-        ans = []
-        backtrack([], Counter(nums))
-        return ans
+        return backtrack(0)
+
+# Time complexitiy: O(n^2 * n!)
+# Space complexitiy: O(n^2 * n!)
