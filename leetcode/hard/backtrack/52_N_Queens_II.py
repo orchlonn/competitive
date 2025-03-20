@@ -27,3 +27,5 @@ class Solution:
             return res
 
 
+# Time complexity: O(N!)
+# Space complexity: O(N)
