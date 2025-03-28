@@ -1,20 +1,20 @@
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
-        def backtrack(remain, comb, nextStart):
-            if remain == 0 and len(comb) == k:
+        def backtrack(comb, remain, nextIndex):
+            if len(comb) == k and remain == 0:
                 res.append(list(comb))
-            elif remain < 0 or len(comb) == k:
                 return
-
-            for i in range(nextStart, 9):
+            elif remain < 0:
+                return
+            
+            for i in range(nextIndex, 9):
                 comb.append(i + 1)
-                backtrack(remain - i - 1, comb, i + 1)
+                backtrack(comb, remain - 1 - i, i + 1)
                 comb.pop()
 
         res = []
-        backtrack(n, [], 0)
-
+        backtrack([], n, 0)
         return res
 
-# Time complexity: O(K * C(9, K))
-# Space complexitiy: O(K)
+# Time complexity: O(2^n)
+# Space complexity: O(2^n)
