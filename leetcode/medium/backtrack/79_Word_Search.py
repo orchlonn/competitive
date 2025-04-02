@@ -1,30 +1,32 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        def valid(row, col):
-            return 0 <= row < m and 0 <= col < n
-
-        def backtrack(row, col, i, seen):
-            if i == len(word):
+        def backtrack(r, c, i):
+            if len(word) == i:
                 return True
 
-            for dx, dy in directions:
-                next_row, next_col = row + dy, col + dx
-                if valid(next_row, next_col) and (next_row, next_col) not in seen:
-                    if board[next_row][next_col] == word[i]:
-                        seen.add((next_row, next_col))
-                        if backtrack(next_row, next_col, i + 1, seen):
-                            return True
-                        seen.remove((next_row, next_col))
+            if (r not in range(ROWS) or
+                c not in range(COLS) or
+                (r, c) in visit or
+                board[r][c] != word[i]
+            ):
+                return False
             
-            return False
-
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        m = len(board)
-        n = len(board[0])
-
-        for row in range(m):
-            for col in range(n):
-                if board[row][col] == word[0] and backtrack(row, col, 1, {(row, col)}):
-                    return True
+            visit.add((r, c))
+            res = ( backtrack(r + 1, c, i + 1) or 
+                    backtrack(r - 1, c, i + 1) or 
+                    backtrack(r, c + 1, i + 1) or 
+                    backtrack(r, c - 1, i + 1))
+            visit.remove((r, c))
+            
+            return res
         
+        visit = set()
+        ROWS, COLS = len(board), len(board[0])
+
+        for row in range(ROWS):
+            for col in range(COLS):
+                if backtrack(row, col, 0): return True
+
         return False
+# Time complexity: O(N * M * 4^N)
+# Space complexity: O(N * M)
