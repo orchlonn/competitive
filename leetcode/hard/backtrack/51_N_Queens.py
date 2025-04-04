@@ -1,34 +1,34 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        res = []
-        board = [["."] * n for i in range(n)]
+        ans = []
+        comb = [["."] * n for i in range(n)]
         posDiag = set() # r + c
         negDiag = set() # r - c
         cols = set()
 
         def backtrack(r):
             if r == n:
-                res.append(["".join(row) for row in board])
-                return
-            
+                ans.append(["".join(row) for row in comb])
+                return 
+
             for c in range(n):
-                if c in cols or (r + c) in posDiag or (r - c) in negDiag or board[r][c] == "Q":
-                    continue 
-                    
+                if c in cols or (r - c) in negDiag or (r + c) in posDiag or comb[r][c] == "Q":
+                    continue
+                        
+                comb[r][c] = "Q"
                 cols.add(c)
                 posDiag.add(r + c)
                 negDiag.add(r - c)
-                board[r][c] = "Q"
-
+                    
                 backtrack(r + 1)
 
+                comb[r][c] = "."
                 cols.remove(c)
                 posDiag.remove(r + c)
                 negDiag.remove(r - c)
-                board[r][c] = "."
-        
+
         backtrack(0)
-        return res
-        
+        return ans
+
 # Time complexity: O(N!)
-# Space complexity: O(N^2) for board + O(N) for backtracking.
+# Space complexity: O(N^2) for comb + O(N) for backtracking. Thus, overall time complexity is O(N^2)
