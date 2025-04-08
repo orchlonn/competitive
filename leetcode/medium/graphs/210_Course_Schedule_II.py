@@ -3,15 +3,16 @@ class Solution:
         prereq = {c:[] for c in range(numCourses)}
         for crs, pre in prerequisites:
             prereq[crs].append(pre)
+        
+        visit, cycle = set(), set()
         output = []
-        cycle, visit = set(), set()
 
         def dfs(crs):
             if crs in cycle:
                 return False
             if crs in visit:
                 return True
-
+            
             cycle.add(crs)
 
             for pre in prereq[crs]:
@@ -25,7 +26,7 @@ class Solution:
         for c in range(numCourses):
             if dfs(c) == False:
                 return []
-            
+
         return output
 
 # Time complexity: O(P + N) where P is number of prerequisites and N is numCourse
