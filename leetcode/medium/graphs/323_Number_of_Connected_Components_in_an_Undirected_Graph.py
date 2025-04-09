@@ -1,24 +1,27 @@
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
-        graph = {i: [] for i in range(n)}
-        for u, v in edges:
-            graph[u].append(v)
-            graph[v].append(u)
+        graph = defaultdict(list)
+        for i, j in edges:
+            graph[i].append(j)
+            graph[j].append(i)
         
         visit = set()
-        ans = 0
-        
+        res = 0
+
         def dfs(node):
             if node in visit:
                 return
             
             visit.add(node)
-            for neighbor in graph[node]:
-                dfs(neighbor)
-        
+            for nei in graph[node]:
+                dfs(nei)
+            
         for node in range(n):
             if node not in visit:
-                ans += 1
+                res += 1
                 dfs(node)
-        
-        return ans
+
+        return res
+
+# Time complexity: O(E + V)
+# Space complexity: O(E + V)
