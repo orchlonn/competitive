@@ -1,23 +1,22 @@
 class Solution:
     def mostPoints(self, questions: List[List[int]]) -> int:
         N = len(questions)
-        cache = {}
+        memoization = {}
 
         def dp(i):
             if i >= N:
                 return 0
             
-            if i in cache:
-                return cache[i]
-            
-            points, brainpower = questions[i]
+            if i in memoization:
+                return memoization[i]
 
-            cache[i] = max(
-                dp(i + 1), # skip
-                points + dp(1 + i + brainpower) # choose
+            points, brainpower = questions[i]
+            memoization[i] = max(
+                dp(i + 1),
+                points + dp(i + 1 + brainpower)
             )
-            return cache[i]
-        
+            return memoization[i]
+
         return dp(0)
 
 # Time complexity: O(N)
@@ -29,18 +28,18 @@ class Solution:
 class Solution:
     def mostPoints(self, questions: List[List[int]]) -> int:
         N = len(questions)
-        cache = {}
-
-        for i in reversed(range(N)):
+        memoization =  {}
+        
+        for i in range(N - 1, -1, -1):
             points, brainpower = questions[i]
-            next_i = i + 1 + brainpower 
+            next_i = i + 1 + brainpower
 
-            choose = points + (cache[next_i] if next_i < N else 0)
-            skip = cache[i + 1] if i + 1 < N else 0
-            
-            cache[i] = max(choose, skip)
-    
-        return cache[0]
+            skip = memoization[i + 1] if i + 1 < N else 0
+            choose = points + (memoization[next_i] if next_i < N else 0)
+
+            memoization[i] = max(skip, choose)
+        
+        return memoization[0]
 
 # Time complexity: O(N)
 # Space complexity: O(N) = [only cache]
