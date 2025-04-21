@@ -27,19 +27,19 @@ class Solution:
 # Soltion #2 (Bottom up)
 class Solution:
     def mostPoints(self, questions: List[List[int]]) -> int:
+        cache = {}
         N = len(questions)
-        memoization =  {}
-        
-        for i in range(N - 1, -1, -1):
+
+        for i in reversed(range(N)):
             points, brainpower = questions[i]
-            next_i = i + 1 + brainpower
+            next_i = brainpower + 1 + i
 
-            skip = memoization[i + 1] if i + 1 < N else 0
-            choose = points + (memoization[next_i] if next_i < N else 0)
+            skip = cache[i + 1] if (i + 1) < N else 0
+            choose = points + (cache[next_i] if next_i < N else 0)
 
-            memoization[i] = max(skip, choose)
-        
-        return memoization[0]
+            cache[i] = max(skip, choose)
+
+        return cache[0]
 
 # Time complexity: O(N)
 # Space complexity: O(N) = [only cache]
