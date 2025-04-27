@@ -10,3 +10,5 @@ class Solution:
             free[i] = max(free[i - 1], hold[i - 1] + prices[i] - fee)
 
         return free[-1]
+
+# Time complexity: O(N)
