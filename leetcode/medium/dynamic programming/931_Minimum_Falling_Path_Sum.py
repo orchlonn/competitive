@@ -29,4 +29,20 @@ class Solution:
         return res
 
 # Time complexity: O(N^2)
-# Space complexity: O(N)
+# Space complexity: O(N^2)
+
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        N = len(matrix)
+
+        for r in range(1, N):
+            for c in range(N):
+                left = matrix[r - 1][c]
+                mid = matrix[r - 1][c - 1] if c > 0 else float('inf')
+                right = matrix[r - 1][c + 1] if c < N - 1 else float('inf')
+                matrix[r][c] = matrix[r][c] + min(left, mid, right)
+        
+        return min(matrix[-1])
+
+# Time complexity: O(N^2)
+# Space complexity: O(1)
