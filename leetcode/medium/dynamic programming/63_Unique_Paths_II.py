@@ -22,17 +22,24 @@ class Solution:
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
-        dp = {(ROWS - 1, COLS - 1): 1}
+        cache = {}
 
         def dfs(r, c):
-            if r == ROWS or c == COLS or obstacleGrid[r][c] == 1:
+            if r not in range(ROWS) or c not in range(COLS):
                 return 0
             
-            if (r, c) in dp:
-                return dp[(r, c)]
+            if obstacleGrid[r][c] == 1:
+                return 0
             
-            dp[(r, c)] = dfs(r + 1, c) + dfs(r, c + 1)
-            return dp[(r, c)]
+            if (r, c) in cache:
+                return cache[(r, c)]
+
+            if r == ROWS - 1 and c == COLS - 1:
+                return 1
+            
+            cache[(r ,c)] = (dfs(r + 1, c) + dfs(r, c + 1))
+            return cache[(r, c)]
+        
         return dfs(0, 0)
 
 # Time complexity: O(COLS * ROWS)
