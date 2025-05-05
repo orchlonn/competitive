@@ -1,16 +1,15 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
         def helper(numbers):
-            rob1, rob2 = 0, 0
+            first, second = 0, 0
 
-            for n in numbers:
-                new_rob = max(rob1 + n, rob2)
-                rob1 = rob2
-                rob2 = new_rob
+            for num in numbers:
+                temp = max(first + num, second)
+                first = second
+                second = temp
             
-            return rob2 
-        
-        return max(nums[0], helper(nums[1:]), helper(nums[:-1]))
+            return second
 
+        return max(helper(nums[1:]), helper(nums[:-1]), nums[0])
 # Time complexity: O(N)
 # Space complexity: O(1)
