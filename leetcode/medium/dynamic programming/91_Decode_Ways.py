@@ -15,7 +15,7 @@ class Solution:
             if 1 <= one_digit <= 9:
                 dp[i] += dp[i - 1]
 
-            if 10 <= two <= 26:
+            if 10 <= two_digits <= 26:
                 dp[i] += dp[i - 2]
             
         return dp[-1]
