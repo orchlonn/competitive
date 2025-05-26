@@ -24,3 +24,25 @@ class Solution:
 # m = len(s1), n len(s2)
 # Time complexity: O(m * n)
 # Space complexity: O(m * n)
+
+# Solution 2: (Bottom-up)
+class Solution:
+    def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
+        if len(s1) + len(s2) != len(s3):
+            return False
+
+        dp = [[False] * (len(s2) + 1) for _ in range(len(s1) + 1)]
+        dp[-1][-1] = True
+
+        for i in range(len(s1), -1, -1):
+            for j in range(len(s2), -1, -1):
+                if (len(s1) > i and s1[i] == s3[i + j] and dp[i + 1][j]):
+                    dp[i][j] = True
+                if (len(s2) > j and s2[j] == s3[i + j] and dp[i][j + 1]):
+                    dp[i][j] = True
+        
+        return dp[0][0]
+ 
+# m = len(s1), n len(s2)
+# Time complexity: O(m * n)
+# Space complexity: O(m * n)
