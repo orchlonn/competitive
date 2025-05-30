@@ -13,6 +13,6 @@ class Solution:
             globalMin = min(globalMin, curMin)
         
         return max(globalMax, total - globalMin) if globalMax > 0 else globalMax
-
+    
 # Time complexity: O(N)
 # Space complexity: O(1)
