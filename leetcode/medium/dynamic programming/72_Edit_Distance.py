@@ -1,20 +1,20 @@
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
-        cache = [[float('inf')] * (len(word2) + 1) for _ in range(len(word1) + 1)]
+        dp = [[float('inf')] * (len(word2) + 1) for _ in range(len(word1) + 1)]
 
         for i in range(len(word2) + 1):
-            cache[len(word1)][i] = len(word2) - i
+            dp[len(word1)][i] = len(word2) - i
         for j in range(len(word1) + 1):
-            cache[j][len(word2)] = len(word1) - j
-
-        for i in range(len(word1) - 1, -1, -1):
+            dp[j][len(word2)] = len(word1) - j
+        
+        for i in range(len(word1) -1, -1, -1):
             for j in range(len(word2) - 1, -1, -1):
                 if word1[i] == word2[j]:
-                    cache[i][j] = cache[i + 1][j + 1]
+                    dp[i][j] = dp[i + 1][j + 1]
                 else:
-                    cache[i][j] = 1 + min(cache[i + 1][j + 1], cache[i + 1][j], cache[i][j + 1])
+                    dp[i][j] = 1 + min(dp[i + 1][j + 1], dp[i + 1][j], dp[i][j + 1])
+                    
+        return dp[0][0]
         
-        return cache[0][0]
-
 # Time complexity: O(w1 * w2)
 # Space complexity: O(w1 * w2)
