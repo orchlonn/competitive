@@ -4,7 +4,6 @@ class Solution:
         count = 0
 
         for boxType in boxTypes:
-            print(boxType)
             boxCount = min(truckSize, boxType[0])
             count += boxCount * boxType[1]
             truckSize -= boxCount
