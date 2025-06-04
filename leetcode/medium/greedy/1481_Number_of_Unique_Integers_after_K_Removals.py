@@ -1,9 +1,9 @@
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
-        count = Counter(arr)
-        ordered = sorted(count.values(), reverse=True)
+        counter = Counter(arr)
+        ordered = sorted(counter.values(), reverse=True)
 
-        while k:
+        while k > 0:
             value = ordered[-1]
             if k >= value:
                 k -= value
@@ -12,6 +12,6 @@ class Solution:
                 break
         
         return len(ordered)
-
+        
 # Time Complexity: O(n log n) [Because of sorting algorithm]
 # Space Complexity: O(n)
