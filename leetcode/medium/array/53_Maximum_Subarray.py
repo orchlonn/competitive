@@ -1,15 +1,14 @@
 # Solution 1: Kadene's algorithm
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        max_sum = nums[0]
-        cur_sum = 0
+        curSum = 0
+        maxSum = nums[0]
 
-        for n in nums:
-            cur_sum = max(cur_sum, 0)
-            cur_sum += n
-            max_sum = max(max_sum, cur_sum)
+        for num in nums:
+            curSum = max(curSum, 0)
+            curSum += num
+            maxSum = max(curSum, maxSum)
         
-        return max_sum
-        
+        return maxSum
 # Time complexity: O(N)
 # Space complexity: O(1)
