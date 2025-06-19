@@ -5,7 +5,7 @@ class Solution:
         l, r = 0, len(height) - 1
         maxLeft, maxRight = height[l], height[r]
         ans = 0
-        
+
         while r > l:
             if maxRight > maxLeft:
                 l += 1
@@ -15,7 +15,7 @@ class Solution:
                 r -= 1
                 maxRight = max(maxRight, height[r])
                 ans += maxRight - height[r]
-        
+            
         return ans
 
 # Time complexity: O(N)
