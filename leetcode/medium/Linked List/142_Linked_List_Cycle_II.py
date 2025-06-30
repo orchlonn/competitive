@@ -11,17 +11,17 @@ class Solution:
         while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
-            if slow == fast:
+            if fast == slow:
                 break
-        if not fast or not fast.next:
-            return None
-
-        cur = head
-        while cur != slow:
-            cur = cur.next
-            slow = slow.next
         
-        return slow
+        cur = head
+        while slow and slow.next:
+            if slow == cur:
+                return slow
+            slow = slow.next
+            cur = cur.next
+        
+        return None
 
 # Time complexity: O(N)
 # Space complexity: O(1)
