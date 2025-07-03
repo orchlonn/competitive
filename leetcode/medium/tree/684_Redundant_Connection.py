@@ -16,7 +16,7 @@ class Solution:
             if p1 == p2:
                 return False
 
-            if p1 > p2:
+            if rank[p1] > rank[p2]:
                 par[p2] = p1
                 rank[p1] += rank[p2]
             else:
