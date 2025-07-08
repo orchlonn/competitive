@@ -24,32 +24,33 @@ class SegmentTree:
             M = (L + R) // 2
             self.left = SegmentTree(nums, L, M)
             self.right = SegmentTree(nums, M + 1, R)
-            self.sum = self.left.sum + self.right.sum
+            self.sum = self.right.sum + self.left.sum
 
     def update(self, index, val):
         if self.L == self.R:
             self.sum = val
             return
-
+        
         if index <= self.left.R:
             self.left.update(index, val)
         else:
             self.right.update(index, val)
+        
         self.sum = self.left.sum + self.right.sum
-
-    def range_query(self, L, R):
-        if self.L == L and self.R == R:
+    
+    def query_range(self, L, R):
+        if L == self.L and self.R == R:
             return self.sum
-
+        
         M = (self.L + self.R) // 2
-        if L > M:
-            return self.right.range_query(L, R)
-        elif R <= M:
-            return self.left.range_query(L, R)
-        else:
-            return (self.left.range_query(L, M) +
-                    self.right.range_query(M + 1, R))
 
+        if L > M:
+            return self.right.query_range(L, R)
+        elif M >= R:
+            return self.left.query_range(L, R)
+        else:
+            return (self.left.query_range(L, M) + self.right.query_range(M + 1, R))
+        
 
 class NumArray:
 
@@ -65,5 +66,4 @@ class NumArray:
 
     def sumRange(self, left, right):
         if self.root:
-            return self.root.range_query(left, right)
-        return 0
+            return self.root.query_range(left, right)
