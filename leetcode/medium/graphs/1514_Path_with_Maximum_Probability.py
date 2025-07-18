@@ -5,18 +5,21 @@ class Solution:
             src, dst = edges[i]
             adj[src].append([dst, succProb[i]])
             adj[dst].append([src, succProb[i]])
-        
+
         pq = [[-1, start_node]]
         visit = set()
 
         while pq:
-            prob, cur = heapq.heappop(pq)
-            visit.add(cur)
-
-            if cur == end_node:
+            prob, curr = heapq.heappop(pq)
+            if curr == end_node:
                 return prob * -1
-            for nei, edgeProb in adj[cur]:
+            visit.add(curr)
+            
+            for nei, edgeProb in adj[curr]:
                 if nei not in visit:
                     heapq.heappush(pq, (prob * edgeProb, nei))
         
         return 0.0
+
+# Time complexity: O(m log(m))
+# Space complexity: O(m + n)
