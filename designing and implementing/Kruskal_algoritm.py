@@ -29,7 +29,7 @@ class Solution:
 
         unionFind = UnionFind(n)
         res, components = 0, n
-
+        
         while components > 1 and minHeap:
             weight, n1, n2 = heapq.heappop(minHeap)
             if unionFind.union(n1, n2):
