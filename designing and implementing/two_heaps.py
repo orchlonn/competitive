@@ -5,11 +5,10 @@ class Median:
         self.small, self.large = [], []
     
     def insert(self, num):
-        # Push to the max heap and swap with min heap if needed.
-        heapq.heappush(self.small, -1 * num)
-        if self.small and self.large and (-1 * self.small[0] > self.large[0]):
-            val = -1 * heapq.heappop(self.small)
-            heapq.heappush(self.large, val)
+        if self.large and num > self.large[0]:
+            heapq.heappush(self.large, num)
+        else:
+            heapq.heappush(self.small, -1 * num)
 
         # Handle uneven size
         if len(self.large) - len(self.small) > 1:
