@@ -23,5 +23,4 @@ class Solution:
                     visit.add((new_row, new_col))
                     queue.append((new_row, new_col, steps + 1))
                     mat[new_row][new_col] = steps
-        
         return mat
